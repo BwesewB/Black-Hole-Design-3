@@ -1,0 +1,67 @@
+:root{
+    background-color: var(--black);
+    object-fit: cover;
+    overflow: hidden;
+
+    --white: #EBEBEB;
+    --black: #0e0e0e;
+}
+
+html, body{
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+@font-face {
+    font-family: 'LEMONMILK';
+    src: url('/fonts/LEMONMILK-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}    
+
+/* Extralight */
+@font-face {
+    font-family: 'PPMori';
+    src: url('/black_hole/public/fonts/PPMori/PPMori-Extralight.otf') format('opentype');
+    font-weight: 300; /* Use 300 for light fonts */
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'PPMori';
+    src: url('/black_hole/public/fonts/PPMori/PPMori-ExtralightItalic.otf') format('opentype');
+    font-weight: 300;
+    font-style: italic;
+  }
+  
+  /* Regular */
+  @font-face {
+    font-family: 'PPMori';
+    src: url('/black_hole/public/fonts/PPMori/PPMori-Regular.otf') format('opentype');
+    font-weight: 400; /* Use 400 for regular fonts */
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'PPMori';
+    src: url('/black_hole/public/fonts/PPMori/PPMori-RegularItalic.otf') format('opentype');
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  /* Semibold */
+  @font-face {
+    font-family: 'PPMori';
+    src: url('/black_hole/public/fonts/PPMori/PPMori-SemiBold.otf') format('opentype');
+    font-weight: 600; /* Use 600 for semibold fonts */
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'PPMori';
+    src: url('/black_hole/public/fonts/PPMori/PPMori-SemiBoldItalic.otf') format('opentype');
+    font-weight: 600;
+    font-style: italic;
+  }
