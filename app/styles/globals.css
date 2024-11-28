@@ -7,11 +7,36 @@
     --black: #0e0e0e;
 }
 
-html, body{
-    width: 100%;
-    height: 100%;
-    padding: 0;
-    margin: 0;
+html{
+  /* border:1px solid green; */
+}
+
+body{
+    /* border:4px solid red; */
+    /* padding:5rem; */
+    font-family: 'PPMori';
+    color: var(--white);
+}
+
+html, body {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .body {
+
+  }
+}
+
+@media (max-width: 480px) {
+
+}
+
+h1, h2, h3, h4, p{
+  margin: 0;
 }
 
 @font-face {
@@ -24,14 +49,14 @@ html, body{
 /* Extralight */
 @font-face {
     font-family: 'PPMori';
-    src: url('/black_hole/public/fonts/PPMori/PPMori-Extralight.otf') format('opentype');
+    src: url('/fonts/PPMori/PPMori-Extralight.otf') format('opentype');
     font-weight: 300; /* Use 300 for light fonts */
     font-style: normal;
   }
   
   @font-face {
     font-family: 'PPMori';
-    src: url('/black_hole/public/fonts/PPMori/PPMori-ExtralightItalic.otf') format('opentype');
+    src: url('/fonts/PPMori/PPMori-ExtralightItalic.otf') format('opentype');
     font-weight: 300;
     font-style: italic;
   }
@@ -39,14 +64,14 @@ html, body{
   /* Regular */
   @font-face {
     font-family: 'PPMori';
-    src: url('/black_hole/public/fonts/PPMori/PPMori-Regular.otf') format('opentype');
+    src: url('/fonts/PPMori/PPMori-Regular.otf') format('opentype');
     font-weight: 400; /* Use 400 for regular fonts */
     font-style: normal;
   }
   
   @font-face {
     font-family: 'PPMori';
-    src: url('/black_hole/public/fonts/PPMori/PPMori-RegularItalic.otf') format('opentype');
+    src: url('/fonts/PPMori/PPMori-RegularItalic.otf') format('opentype');
     font-weight: 400;
     font-style: italic;
   }
@@ -54,14 +79,22 @@ html, body{
   /* Semibold */
   @font-face {
     font-family: 'PPMori';
-    src: url('/black_hole/public/fonts/PPMori/PPMori-SemiBold.otf') format('opentype');
+    src: url('/fonts/PPMori/PPMori-SemiBold.otf') format('opentype');
     font-weight: 600; /* Use 600 for semibold fonts */
     font-style: normal;
   }
   
   @font-face {
     font-family: 'PPMori';
-    src: url('/black_hole/public/fonts/PPMori/PPMori-SemiBoldItalic.otf') format('opentype');
+    src: url('/fonts/PPMori/PPMori-SemiBoldItalic.otf') format('opentype');
     font-weight: 600;
     font-style: italic;
   }
+
+  .h2BH{
+    font-family: 'LEMONMILK';
+    font-size: 3rem;
+  }
+
+
+

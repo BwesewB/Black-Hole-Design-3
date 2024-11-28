@@ -1,0 +1,41 @@
+.textContainer {
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 5rem;
+    margin-left: 5rem;
+    height: 18rem;
+    width: 80%; 
+    max-width: 60rem; /* Limit the maximum size of the container */
+    /* border: 1px solid red; */
+    box-sizing: border-box;
+    padding: 1rem; 
+    transition: width 0.3s ease; 
+}
+
+.subheaderItalixBH {
+    font-style: italic;
+    font-weight: lighter;
+    font-size: 1.5rem;
+    margin-bottom: 2rem; /* Space below the subtitle */
+}
+
+.regularTextBH {
+    font-size: 1rem;
+    /* border: 1px solid blue; */
+    width: 100%;
+    word-wrap: break-word; /* Ensure long words wrap */
+    box-sizing: border-box; /* Include padding/borders in width */
+    transition: font-size 0.3s ease, width 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .regularTextBH {
+        font-size: 1rem; /* Reduce font size for readability on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .regularTextBH {
+        font-size: 0.9rem; /* Further reduce font size on very small screens */
+    }
+}
