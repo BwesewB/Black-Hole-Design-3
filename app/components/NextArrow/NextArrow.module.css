@@ -5,23 +5,17 @@
     align-items: center;
     height: 100px;
     position: fixed;
-    margin-top:800px;
-    pointer-events: none;
     position:absolute;
     bottom: 0;
     right: 0;
-    padding-right: 5rem;
-    padding-bottom: 5rem;
+    margin-right: 4rem;
+    margin-bottom: 4rem;
 }
 
 .arrowBH {
     display: inline-block;
-    border-left: 30px solid white;
-    border-top: 30px solid transparent;
-    border-bottom: 30px solid transparent;
-    transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
-    animation: moveLeftRight 1s infinite alternate ease-in-out;
+    animation: moveLeftRight 2s infinite alternate;
+    animation-timing-function: cubic-bezier(1, 0.23);
 }
 
 .arrowBH:nth-child(1) {

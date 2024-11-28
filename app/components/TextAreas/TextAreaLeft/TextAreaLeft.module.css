@@ -1,8 +1,8 @@
 .textContainer {
     position: absolute;
     bottom: 0;
-    margin-bottom: 5rem;
-    margin-left: 5rem;
+    margin-bottom: 4rem;
+    margin-left: 4rem;
     height: 18rem;
     width: 80%; 
     max-width: 60rem; /* Limit the maximum size of the container */
