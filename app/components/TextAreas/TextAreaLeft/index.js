@@ -43,18 +43,22 @@ export default function TextAreaLeft({
     }, [headingTitle]); // Re-run animation if headingTitle changes
 
     useEffect(() => {
-        const italix = document.querySelectorAll('subheaderItalixBH');
+        const italix = document.querySelectorAll(`.${styles.subheaderItalixBH}`);
 
         gsap.fromTo(
             italix,
             {
-
+                opacity:0,
+                y:'5rem'
             },
             {
-                
+                opacity:1,
+                y:0,
+                duration: 1,
+                ease: "power1.inOut",
             }
         )
-    })
+    }, [italicSubtitle])
 
     return (
         <div className={styles.textContainer}>
