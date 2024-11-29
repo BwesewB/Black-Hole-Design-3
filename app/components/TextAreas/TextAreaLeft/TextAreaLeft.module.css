@@ -28,6 +28,17 @@
     transition: font-size 0.3s ease, width 0.3s ease;
 }
 
+.textBox{
+    overflow: hidden;
+    /* border: 1px solid red; */
+}
+
+.word{
+    display: inline-block;
+    margin:0;
+    margin-right: 1rem;
+}
+
 @media (max-width: 768px) {
     .regularTextBH {
         font-size: 1rem; /* Reduce font size for readability on smaller screens */
