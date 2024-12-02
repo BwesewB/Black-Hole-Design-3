@@ -8,7 +8,7 @@ export default function PageTwo({ handleNext }) {
         headingTitle='Infinite Gravitational Pull'
         italicSubtitle='Nothing Escapes. Not Even Light'
         pText=''
-        handleNext={() => handleNext("PageTwo")}
+        handleNext={() => handleNext("PageThree")}
       />
     </>
   );
