@@ -1,6 +1,7 @@
 import gsap from "gsap";
 import TextAreaLeft from '../../components/TextAreas/TextAreaLeft';
 import NextArrow from '../../components/NextArrow';
+import { useState } from "react";
 
 export default function PageLayout({ 
     handleNext,
@@ -9,7 +10,23 @@ export default function PageLayout({
     pText=""
 }) {
 
+  // Function to animate out text when the "NextArrow" is clicked
+  const [isAnimatingOut, setIsAnimatingOut] = useState(false);
+
+  // Function to animate out text when the "NextArrow" is clicked
+  const onTextAnimateOut = () => {
+    setIsAnimatingOut(true);
+    gsap.to(
+      ".h2BH", {
+      opacity: 0,
+      y: '5rem',
+      duration: 1,
+      ease: "power2.inOut"
+    });
+  };
+
   const onClickHandler = () => {
+    onTextAnimateOut()
     handleNext({handleNext});
   };
 

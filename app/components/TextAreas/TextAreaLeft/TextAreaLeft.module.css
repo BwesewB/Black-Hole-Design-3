@@ -26,6 +26,7 @@
     word-wrap: break-word; /* Ensure long words wrap */
     box-sizing: border-box; /* Include padding/borders in width */
     transition: font-size 0.3s ease, width 0.3s ease;
+    display: block;
 }
 
 .textBox{
@@ -37,6 +38,10 @@
     display: inline-block;
     margin:0;
     margin-right: 1rem;
+}
+
+.line{
+    border:1px solid red
 }
 
 @media (max-width: 768px) {

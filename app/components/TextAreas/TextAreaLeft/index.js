@@ -6,12 +6,9 @@ export default function TextAreaLeft({
     headingTitle="",
     italicSubtitle="",
     pText="",
-    showButton,
-    buttonRoute,
-}){
-    const headingRef = useRef(null);
+}) {
 
-    // Function to split text into spans
+    // Function to split text into spans for words
     const splitTextToSpans = (text) => {
         return text.split(" ").map((word, index) => (
             <span key={index} className={styles.word}>
@@ -20,50 +17,55 @@ export default function TextAreaLeft({
         ));
     };
 
+    // Heading animation: Animating words (spans)
     useEffect(() => {
-        // Select all span elements inside the heading
-        const letters = headingRef.current.querySelectorAll("span");
-
-        // Animate letters with a stagger
+        const words = document.querySelectorAll(`.${styles.word}`);
         gsap.fromTo(
-            letters,
-            { 
-                opacity: 0, 
-                y: '5rem',
-            }, // Initial state
+            words,
+            { opacity: 0, y: '5rem' },
             {
-                delay:0.1,
+                delay: 0.1,
                 opacity: 1,
                 y: 0,
                 duration: 1,
-                stagger: 0.25, // Delay between each word
+                stagger: 0.25,
                 ease: "power1.inOut",
             }
         );
-    }, [headingTitle]); // Re-run animation if headingTitle changes
+    }, [headingTitle]);
 
+    // Italic subtitle animation
     useEffect(() => {
         const italix = document.querySelectorAll(`.${styles.subheaderItalixBH}`);
-
         gsap.fromTo(
             italix,
+            { opacity: 0, y: '5rem' },
+            { opacity: 1, y: 0, duration: 1, ease: "power1.inOut" }
+        );
+    }, [italicSubtitle]);
+
+    // pText line animation: Animating each line of text
+    useEffect(() => {
+        gsap.fromTo(
+            document.querySelector(`.${styles.regularTextBH}`),
             {
                 opacity:0,
-                y:'5rem'
+                x:"-20rem",
             },
             {
                 opacity:1,
-                y:0,
-                duration: 1,
-                ease: "power1.inOut",
+                x:"0rem",
+                duration:1,
+                delay:1.5,
+                ease: "power2.inOut"
             }
         )
-    }, [italicSubtitle])
+    }, []);
 
     return (
         <div className={styles.textContainer}>
             <div className={styles.textBox}>
-                <h2 ref={headingRef} className="h2BH">
+                <h2 className="h2BH">
                     {splitTextToSpans(headingTitle)}
                 </h2>
             </div>
@@ -71,9 +73,11 @@ export default function TextAreaLeft({
                 <p className={styles.subheaderItalixBH}>{italicSubtitle}</p>
             </div>
             <div className={styles.textBox}>
-                <p className={styles.regularTextBH}>{pText}</p>
+                <div className={styles.regularTextBH}>
+                    {pText} 
+                </div> 
+                {/* split the text to spans later */}
             </div>
-            
         </div>
     );
 }
