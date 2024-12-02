@@ -23,6 +23,70 @@ export default function ButtonBH({
     };
 
     useEffect(() => {
+
+        const circleBack = circleBackRef.current;
+
+        gsap.fromTo(
+            circleBack,
+            {
+                opacity:0,
+                width:0,
+                height:"0vh"
+                // y:"20rem",
+            },
+            {
+                opacity:1,
+                width:"6rem",
+                height: "6rem",
+                // y:"0rem",
+                duration:1,
+                ease:"power2.inOut",
+            }
+        )
+
+        gsap.fromTo(
+            buttonBHRef.current,
+            {
+                opacity:0,
+                width:0,
+                height:"0vh"
+            },
+            {
+                opacity:1,
+                height: "5vh",
+                width:"17vw",
+                duration:2,
+                delay:1,
+                ease:"power2.inOut",
+
+                // onComplete: () => {
+                //     gsap.to(buttonBHRef.current, {
+                //         height: "5vh",
+                //     })
+                // }
+            }
+        )
+
+        const hoverAnimation = gsap.to(circleBack, {
+            width: "5rem",
+            height: "5rem",
+            paused: true,
+            duration: 0.5,
+            ease: "power2.out",
+        });
+    
+        // Trigger hover animation on mouse enter/leave
+        circleBack.addEventListener('mouseenter', () => hoverAnimation.play());
+        circleBack.addEventListener('mouseleave', () => hoverAnimation.reverse());
+    
+        return () => {
+            circleBack.removeEventListener('mouseenter', () => hoverAnimation.play());
+            circleBack.removeEventListener('mouseleave', () => hoverAnimation.reverse());
+        };
+    }, [])
+
+
+    useEffect(() => {
         if (!isClicked) return; // Only run animations if button is clicked
 
         // Animate the circleBack
