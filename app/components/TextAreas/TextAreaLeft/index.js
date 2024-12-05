@@ -31,9 +31,11 @@ export default function TextAreaLeft({
         const words = document.querySelectorAll(`.${styles.word}`);
         gsap.fromTo(
             words,
-            { opacity: 0, y: '5rem' },
             {
-                delay: 0.1,
+                y: '2rem' 
+            },
+            {
+                delay: 3.1,
                 opacity: 1,
                 y: 0,
                 duration: 1,
@@ -48,8 +50,16 @@ export default function TextAreaLeft({
         const italix = document.querySelectorAll(`.${styles.subheaderItalixBH}`);
         gsap.fromTo(
             italix,
-            { opacity: 0, y: '5rem' },
-            { opacity: 1, y: 0, duration: 1, ease: "power1.inOut" }
+            { 
+                y: '2rem' 
+            },
+            { 
+                delay: 3,
+                opacity: 1, 
+                y: 0, 
+                duration: 1, 
+                ease: "power1.inOut" 
+            }
         );
     }, [italicSubtitle]);
 
@@ -58,10 +68,10 @@ export default function TextAreaLeft({
         gsap.fromTo(
             document.querySelectorAll(`.${styles.wordSmaller}`),
             {
-                opacity: 0, 
                 y: '1rem'
             },
             {
+                delay: 3,
                 opacity: 1,
                 y: 0,
                 stagger: 0.02,
@@ -84,7 +94,6 @@ export default function TextAreaLeft({
                 <div className={styles.regularTextBH}>
                     {splitSmallerTextToSpans(pText)}
                 </div> 
-                {/* split the text to spans later */}
             </div>
         </div>
     );

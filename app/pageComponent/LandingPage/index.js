@@ -8,7 +8,6 @@ import { useEffect } from 'react';
 export default function LandingPage({ onClickHandler }) {
 
     useEffect(() => {
-        // Select all letters using GSAP
         const letters = document.querySelectorAll(`.${styles['bh-h1']}`);
         
         // Animate each letter coming from the top with a stagger effect
@@ -24,7 +23,7 @@ export default function LandingPage({ onClickHandler }) {
                 duration: 2, 
                 stagger: 0.2, 
                 ease: "power3.out" 
-            } // Ending position
+            }
         );
       }, []);
 
@@ -65,7 +64,6 @@ export default function LandingPage({ onClickHandler }) {
             </div>
         </div>
         <ButtonBH buttonText='START' onClickHandler={handleStartClick}/>
-        {/* <ButtonBH buttonText='START' onClickHandler={() => onClickHandler("PageOne")}/> */}
     </div>
 
     </>

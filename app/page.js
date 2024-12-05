@@ -3,7 +3,8 @@
 import Image from "next/image";
 import gsap from "gsap";
 import LandingPage from "./pageComponent/LandingPage";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import VideoBackground from "./components/VideoBackground";
 import PageOne from "./pageComponent/Page1";
 import PageTwo from "./pageComponent/Page2";
 import PageThree from "./pageComponent/Page3";
@@ -19,23 +20,41 @@ import PageTwelve from "./pageComponent/Page12";
 
 export default function Home({}) {
 
-  const [currentPage, setCurrentPage] = useState("LandingPage")
+  const [currentPage, setCurrentPage] = useState("LandingPage");
+  const videoRef = useRef(null);
 
-  const handleNextPage = (nextPage) => {
+  const handleNextPage = (nextPage, videoConfig) => {
     // Hide the current page with animation
     gsap.to(".current-page", {
-      opacity: 0,
-      duration: 1,
+      // opacity: 0,
+      // duration: 1,
       onComplete: () => {
         setCurrentPage(nextPage); // Change page after animation
+        videoRef.current.playNextVideo(
+          videoConfig.src,
+          videoConfig.loop,
+          videoConfig.onVideoEnd
+        );
       },
     });
   };
 
   return (
     <>
+      <VideoBackground ref={videoRef} src="/videos/Clip1.mp4" loop={true} />
       <div>
-        {currentPage === "LandingPage" && <LandingPage onClickHandler={handleNextPage} />}
+        {currentPage === "LandingPage" && (
+          <LandingPage
+            onClickHandler={(nextPage) =>
+              handleNextPage(nextPage, {
+                src: "/videos/Clip2.mp4",
+                loop: false,
+                onVideoEnd: () =>
+                  videoRef.current.playNextVideo("/videos/Clip3.mp4", true),
+              })
+            }
+          />
+        )}
         {currentPage === "PageOne" && <PageOne handleNext={handleNextPage}/>}
         {currentPage === "PageTwo" && <PageTwo handleNext={handleNextPage}/>}
         {currentPage === "PageThree" && <PageThree handleNext={handleNextPage} />}
