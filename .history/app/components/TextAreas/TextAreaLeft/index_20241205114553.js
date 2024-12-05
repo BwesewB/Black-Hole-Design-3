@@ -8,19 +8,10 @@ export default function TextAreaLeft({
     pText="",
 }) {
 
-    // Split text into spans for words
+    // Function to split text into spans for words
     const splitTextToSpans = (text) => {
         return text.split(" ").map((word, index) => (
             <span key={index} className={styles.word}>
-                {word}
-            </span>
-        ));
-    };
-
-    //Split smaller text P into spans
-    const splitSmallerTextToSpans = (text) => {
-        return text.split(" ").map((word, index) => (
-            <span key={index} className={styles.wordSmaller}>
                 {word}
             </span>
         ));
@@ -53,19 +44,20 @@ export default function TextAreaLeft({
         );
     }, [italicSubtitle]);
 
-    // pText word animation: Animating each word
+    // pText line animation: Animating each line of text
     useEffect(() => {
         gsap.fromTo(
-            document.querySelectorAll(`.${styles.wordSmaller}`),
+            document.querySelector(`.${styles.regularTextBH}`),
             {
-                opacity: 0, 
-                y: '1rem'
+                opacity:0,
+                x:"-20rem",
             },
             {
-                opacity: 1,
-                y: 0,
-                stagger: 0.02,
-                ease: "power1.inOut",
+                opacity:1,
+                x:"0rem",
+                duration:1,
+                delay:1.5,
+                ease: "power2.inOut"
             }
         )
     }, []);
@@ -82,7 +74,7 @@ export default function TextAreaLeft({
             </div>
             <div className={styles.textBox}>
                 <div className={styles.regularTextBH}>
-                    {splitSmallerTextToSpans(pText)}
+                    {pText} 
                 </div> 
                 {/* split the text to spans later */}
             </div>

@@ -53,18 +53,20 @@ export default function TextAreaLeft({
         );
     }, [italicSubtitle]);
 
-    // pText word animation: Animating each word
+    // pText line animation: Animating each line of text
     useEffect(() => {
         gsap.fromTo(
-            document.querySelectorAll(`.${styles.wordSmaller}`),
+            document.querySelector(`.${styles.wordSmaller}`),
             {
                 opacity: 0, 
-                y: '1rem'
+                y: '5rem'
             },
             {
+                delay: 0.1,
                 opacity: 1,
                 y: 0,
-                stagger: 0.02,
+                duration: 2,
+                stagger: 0.25,
                 ease: "power1.inOut",
             }
         )

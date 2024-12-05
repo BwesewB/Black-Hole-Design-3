@@ -53,19 +53,15 @@ export default function TextAreaLeft({
         );
     }, [italicSubtitle]);
 
-    // pText word animation: Animating each word
+    // pText line animation: Animating each line of text
     useEffect(() => {
         gsap.fromTo(
-            document.querySelectorAll(`.${styles.wordSmaller}`),
+            document.querySelector(`.${styles.wordSmaller}`),
             {
-                opacity: 0, 
-                y: '1rem'
+
             },
             {
-                opacity: 1,
-                y: 0,
-                stagger: 0.02,
-                ease: "power1.inOut",
+
             }
         )
     }, []);
@@ -82,7 +78,7 @@ export default function TextAreaLeft({
             </div>
             <div className={styles.textBox}>
                 <div className={styles.regularTextBH}>
-                    {splitSmallerTextToSpans(pText)}
+                    {splitSmallerTextToSpans(pText)} 
                 </div> 
                 {/* split the text to spans later */}
             </div>

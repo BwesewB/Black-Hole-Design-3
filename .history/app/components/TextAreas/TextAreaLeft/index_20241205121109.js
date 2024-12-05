@@ -59,12 +59,12 @@ export default function TextAreaLeft({
             document.querySelectorAll(`.${styles.wordSmaller}`),
             {
                 opacity: 0, 
-                y: '1rem'
+                y: '5rem'
             },
             {
                 opacity: 1,
                 y: 0,
-                stagger: 0.02,
+                stagger: 0.05,
                 ease: "power1.inOut",
             }
         )

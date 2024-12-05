@@ -64,7 +64,7 @@ export default function TextAreaLeft({
             {
                 opacity: 1,
                 y: 0,
-                stagger: 0.02,
+                stagger: 0.05,
                 ease: "power1.inOut",
             }
         )
