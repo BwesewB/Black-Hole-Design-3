@@ -55,8 +55,30 @@ export default function Home({}) {
             }
           />
         )}
-        {currentPage === "PageOne" && <PageOne handleNext={handleNextPage}/>}
-        {currentPage === "PageTwo" && <PageTwo handleNext={handleNextPage}/>}
+        {currentPage === "PageOne" && (
+          <PageOne 
+            handleNext={(nextPage) => 
+              handleNextPage(nextPage, {
+                src:"/videos/Clip3.mp4",
+                loop: false,
+                onVideoEnd: () =>
+                  videoRef.current.playNextVideo("/videos/Clip3.mp4", false),
+              })
+            }
+          />
+        )}
+        {currentPage === "PageTwo" && (
+          <PageTwo 
+            handleNext={(nextPage) => 
+              handleNextPage(nextPage, {
+                src:"/videos/Clip4.mp4",
+                loop: false,
+                onVideoEnd: () =>
+                  videoRef.current.playNextVideo("/videos/Clip5.mp4", true),
+              })
+            }
+          />
+        )}
         {currentPage === "PageThree" && <PageThree handleNext={handleNextPage} />}
         {currentPage === "PageFour" && <PageFour handleNext={handleNextPage} />}
         {currentPage === "PageFive" && <PageFive handleNext={handleNextPage} />}

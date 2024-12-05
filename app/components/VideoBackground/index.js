@@ -12,24 +12,28 @@ const VideoBackground = forwardRef(({ src, loop = false, onVideoEnd }, ref) => {
       const mainVideo = isMainActive ? videoRef1.current : videoRef2.current;
       const transitionVideo = isMainActive ? videoRef2.current : videoRef1.current;
 
-      // Preload and configure the next video
+      // Set up the next video source and loop
       transitionVideo.src = newSrc;
       transitionVideo.loop = newLoop;
       transitionVideo.onended = onEndCallback || null;
 
-      // Fade out the current video and fade in the next
-      transitionVideo.style.opacity = 0;
-      transitionVideo.play();
-      transitionVideo.style.transition = "opacity 0.5s";
+      // Wait for the video to be ready to play
+      transitionVideo.oncanplay = () => {
+        transitionVideo.style.opacity = 0;
+        transitionVideo.play();
 
-      setTimeout(() => {
-        mainVideo.style.opacity = 0;
-        transitionVideo.style.opacity = 1;
+        // Start the fade transition
+        mainVideo.style.transition = "opacity 0.5s";
+        transitionVideo.style.transition = "opacity 0.5s";
+
+        mainVideo.style.opacity = 0; // Fade out current video
+        transitionVideo.style.opacity = 1; // Fade in new video
+
         setTimeout(() => {
-          setIsMainActive(!isMainActive); // Toggle active video
-          mainVideo.pause(); // Pause the old video
-        }, 500);
-      }, 100);
+          setIsMainActive(!isMainActive); // Switch active video
+          mainVideo.pause(); // Pause the previous video
+        }, 500); // Match the duration of the fade
+      };
     },
   }));
 

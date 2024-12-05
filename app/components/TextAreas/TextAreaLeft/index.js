@@ -3,9 +3,10 @@ import gsap from "gsap"
 import { useEffect, useRef } from "react";
 
 export default function TextAreaLeft({ 
-    headingTitle="",
-    italicSubtitle="",
-    pText="",
+    headingTitle = "",
+    italicSubtitle = "",
+    pText = "",
+    delay = 3,
 }) {
 
     // Split text into spans for words
@@ -35,7 +36,7 @@ export default function TextAreaLeft({
                 y: '2rem' 
             },
             {
-                delay: 3.1,
+                delay: delay,
                 opacity: 1,
                 y: 0,
                 duration: 1,
@@ -54,7 +55,7 @@ export default function TextAreaLeft({
                 y: '2rem' 
             },
             { 
-                delay: 3,
+                delay: delay,
                 opacity: 1, 
                 y: 0, 
                 duration: 1, 
@@ -71,7 +72,7 @@ export default function TextAreaLeft({
                 y: '1rem'
             },
             {
-                delay: 3,
+                delay: delay,
                 opacity: 1,
                 y: 0,
                 stagger: 0.02,
