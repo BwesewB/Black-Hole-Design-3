@@ -19,22 +19,45 @@ import PageEleven from "./pageComponent/Page11";
 import PageTwelve from "./pageComponent/Page12";
 
 export default function Home({}) {
-
   const [currentPage, setCurrentPage] = useState("LandingPage");
   const videoRef = useRef(null);
 
   const handleNextPage = (nextPage, videoConfig) => {
+    // Get the currently active video from VideoBackground
+    const currentVideo = videoRef.current.getCurrentVideo();
+
+    // Define transition videos based on the current video playing (for PageFour only)
+    let transitionVideo = "";
+    if (currentPage === "PageFour") {
+      transitionVideo = getTransitionVideo(currentVideo);
+    }
+
     // Hide the current page with animation
     gsap.to(".current-page", {
       onComplete: () => {
         setCurrentPage(nextPage); // Change page after animation
-        videoRef.current.playNextVideo(
-          videoConfig.src,
-          videoConfig.loop,
-          videoConfig.onVideoEnd
-        );
+        // Play transition video if necessary
+        if (transitionVideo) {
+          videoRef.current.playNextVideo(transitionVideo, false, () => {
+            // After transition video ends, play Clip16
+            videoRef.current.playNextVideo("/videos/Clip16.mp4", true, () => {
+              // Clip16 plays on repeat until the next transition
+              videoRef.current.playNextVideo("/videos/Clip16.mp4", true, () => {});
+            });
+          });
+        } else {
+          // No transition video needed, just play the main video
+          videoRef.current.playNextVideo(videoConfig.src, videoConfig.loop, videoConfig.onVideoEnd);
+        }
       },
     });
+  };
+
+  const getTransitionVideo = (currentVideo) => {
+    if (currentVideo.src.includes("Clip7")) return "/videos/Clip13.mp4";
+    if (currentVideo.src.includes("Clip9")) return "/videos/Clip14.mp4";
+    if (currentVideo.src.includes("Clip11")) return "/videos/Clip15.mp4";
+    return "";
   };
 
   return (
@@ -94,9 +117,10 @@ export default function Home({}) {
               handleNextPage(nextPage, {
                 src: "",
                 loop: false,
-                onVideoEnd: () => videoRef.current.playNextVideo("", true),
+                onVideoEnd: () => videoRef.current.playNextVideo("/videos/Clip16.mp4", true),
               })
             }
+            playVideo={videoRef.current.playNextVideo}
           />
         )}
         {currentPage === "PageFive" && (

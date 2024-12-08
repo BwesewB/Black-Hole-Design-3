@@ -7,7 +7,12 @@ const VideoBackground = forwardRef(({ src, loop = false, onVideoEnd }, ref) => {
   const videoRef2 = useRef(null);
   const [isMainActive, setIsMainActive] = useState(true);
 
+  // Expose `getCurrentVideo` to parent component through `useImperativeHandle`
   useImperativeHandle(ref, () => ({
+    // Returns the currently active video element (either videoRef1 or videoRef2)
+    getCurrentVideo() {
+      return isMainActive ? videoRef1.current : videoRef2.current;
+    },
     playNextVideo(newSrc, newLoop, onEndCallback) {
       const mainVideo = isMainActive ? videoRef1.current : videoRef2.current;
       const transitionVideo = isMainActive ? videoRef2.current : videoRef1.current;

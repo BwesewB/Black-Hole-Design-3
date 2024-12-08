@@ -4,10 +4,11 @@ import { useState } from "react";
 import gsap from "gsap";
 import styles from "./Page4.module.css"
 
-export default function PageFour({ handleNext }) {
+export default function PageFour({ handleNext, playVideo }) {
   const [isAnimatingOut, setIsAnimatingOut] = useState(false);
   const [delay, setDelay] = useState(3);
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
+  const [videoIndex, setVideoIndex] = useState(0);
 
   const textAreas = [
     {
@@ -25,6 +26,12 @@ export default function PageFour({ handleNext }) {
       italicSubtitle: "Giants at the Center of Galaxies",
       pText: "Supermassive black holes are the largest type, with masses ranging from millions to billions of solar masses. These colossal black holes lie at the centers of most galaxies, including our own Milky Way, where the supermassive black hole known as Sagittarius A* resides. Supermassive black holes likely formed in the early universe and grew over time by accumulating gas, dust, and merging with other black holes. They play a crucial role in the dynamics of galaxies, influencing their formation and evolution. The study of supermassive black holes is essential to understanding the structure and behavior of galaxies across the universe."
     }
+  ];
+
+  const videoSequences = [
+    { transition: "/videos/Clip8.mp4", main: "/videos/Clip9.mp4" },
+    { transition: "/videos/Clip10.mp4", main: "/videos/Clip11.mp4" },
+    { transition: "/videos/Clip12.mp4", main: "/videos/Clip7.mp4" },
   ];
 
   // Function to animate out text when the "NextArrow" is clicked
@@ -46,6 +53,16 @@ export default function PageFour({ handleNext }) {
 
   const onNextClick = () => {
     setDelay(0);
+
+    const nextSequence = videoSequences[videoIndex];
+
+    playVideo(nextSequence.transition, false, () => {
+      playVideo(nextSequence.main, true);
+    });
+
+    // Update to the next video sequence (circular)
+    setVideoIndex((prevIndex) => (prevIndex + 1) % videoSequences.length);
+
     setCurrentTextIndex((prevIndex) => (prevIndex + 1) % textAreas.length)
   }
 
@@ -69,7 +86,6 @@ export default function PageFour({ handleNext }) {
           delay={delay}
         />
       </div>
-
 
       <NextArrow onClickHandler={onClickHandler}/>
     </>
