@@ -1,0 +1,9 @@
+
+.nextButton{
+    display: flex;
+    gap:1rem
+}
+
+.arrowBH{
+    width: 10px;
+}

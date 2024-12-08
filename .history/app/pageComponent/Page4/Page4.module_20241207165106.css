@@ -1,0 +1,19 @@
+
+.nextButton{
+    display: flex;
+    gap:0.5rem;
+    align-items: center;
+    position:fixed;
+    left:40vw;
+    top:60%;
+    cursor: pointer;
+}
+
+.nextButton p {
+    text-align: center;
+    margin-top: 2px;
+}
+
+.arrowBH{
+    width: 10px;
+}

@@ -1,0 +1,13 @@
+
+.nextButton{
+    display: flex;
+    gap:1rem;
+    align-items: center;
+    position:absolute;
+    left:50%;
+    top:50%
+}
+
+.arrowBH{
+    width: 10px;
+}

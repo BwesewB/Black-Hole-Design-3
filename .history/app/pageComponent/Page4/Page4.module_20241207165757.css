@@ -1,0 +1,28 @@
+
+.buttonWidth{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position:fixed;
+    top:65%;
+    width:100vw;
+}
+
+.nextButton{
+    display: flex;
+    gap:0.5rem;
+    align-items: center;
+    justify-content: center;
+    cursor:pointer;
+    margin-left: 0.6rem;
+    z-index: 5;
+}
+
+.nextButton p {
+    text-align: center;
+    margin-top: 2px;
+}
+
+.arrowBH{
+    width: 10px;
+}
