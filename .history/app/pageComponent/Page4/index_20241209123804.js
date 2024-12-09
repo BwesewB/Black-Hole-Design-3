@@ -62,7 +62,7 @@ export default function PageFour({ handleNext, playVideo }) {
         delay:3,
         stagger:0.2,
         x:"0",
-        ease: "power1.inOut"
+        ease: "power4.inOut"
       }
     )
   })

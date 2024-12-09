@@ -1,51 +1,13 @@
 "use client";
 
 import gsap from "gsap";
-import { useEffect } from "react";
 import styles from "./NextArrow.module.css";
-
-
 
 
 export default function NextArrow({ 
   onClickHandler,
   fill = "#F8F8F8",
-  delay = "3"
 }) {
-
-  useEffect(() => {
-    const arrows = document.querySelector(`.${styles.arrowsBH}`);
-    gsap.fromTo(
-      arrows,
-      {
-        x: '-4rem', 
-        opacity:0,
-      },
-      {
-        delay: delay,
-        x: 0,
-        duration: 2,
-        opacity:1,
-        ease: "power1.inOut",
-      }
-    )
-  })
-
-  useEffect(() => {
-    const arrow = document.querySelectorAll(`.${styles.arrowBH}`);
-    gsap.fromTo(
-        arrow,
-        {
-          x: '-4rem', 
-        },
-        {
-          x: 0,
-          duration: 1,
-          stagger: 1,
-          ease: "power1.inOut",
-        }
-    );
-}, []);
   return (
     <div className={styles.arrowsBH} onClick={onClickHandler}>
         <svg width="31" height="54" viewBox="0 0 31 54" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.arrowBH}>

@@ -2,7 +2,10 @@ import NextArrow from "../../components/NextArrow";
 import TextAreaLeft from "../../components/TextAreas/TextAreaLeft";
 import { useState, useEffect } from "react";
 import gsap from "gsap";
+import { CustomEase } from "gsap/CustomEase";
 import styles from "./Page4.module.css"
+
+gsap.registerPlugin(CustomEase);
 
 export default function PageFour({ handleNext, playVideo }) {
   const [isAnimatingOut, setIsAnimatingOut] = useState(false);
@@ -62,7 +65,10 @@ export default function PageFour({ handleNext, playVideo }) {
         delay:3,
         stagger:0.2,
         x:"0",
-        ease: "power1.inOut"
+        ease: CustomEase.create(
+          "custom",
+          "M0,0 C0,0 0.122,0.005 0.157,0.105 0.203,0.236 0.254,0.482 0.41,0.505 0.618,0.535 0.524,0.509 0.677,0.538 0.822,0.565 0.814,0.867 0.896,0.947 0.95,0.999 1,1 1,1 "
+      ),
       }
     )
   })

@@ -18,15 +18,14 @@ export default function NextArrow({
     gsap.fromTo(
       arrows,
       {
-        x: '-4rem', 
-        opacity:0,
+        x: '-2rem', 
       },
       {
-        delay: delay,
-        x: 0,
-        duration: 2,
-        opacity:1,
-        ease: "power1.inOut",
+          delay: delay,
+          x: 0,
+          duration: 1,
+          opacity:1,
+          ease: "power1.inOut",
       }
     )
   })
@@ -36,7 +35,7 @@ export default function NextArrow({
     gsap.fromTo(
         arrow,
         {
-          x: '-4rem', 
+          x: '-2rem', 
         },
         {
           x: 0,

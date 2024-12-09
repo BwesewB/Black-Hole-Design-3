@@ -36,7 +36,7 @@ export default function NextArrow({
     gsap.fromTo(
         arrow,
         {
-          x: '-4rem', 
+          x: '-2rem', 
         },
         {
           x: 0,

@@ -2,7 +2,10 @@ import NextArrow from "../../components/NextArrow";
 import TextAreaLeft from "../../components/TextAreas/TextAreaLeft";
 import { useState, useEffect } from "react";
 import gsap from "gsap";
+import { CustomEase } from "gsap/CustomEase";
 import styles from "./Page4.module.css"
+
+gsap.registerPlugin(CustomEase);
 
 export default function PageFour({ handleNext, playVideo }) {
   const [isAnimatingOut, setIsAnimatingOut] = useState(false);
@@ -62,7 +65,7 @@ export default function PageFour({ handleNext, playVideo }) {
         delay:3,
         stagger:0.2,
         x:"0",
-        ease: "power1.inOut"
+        ease: "power3.inOut"
       }
     )
   })

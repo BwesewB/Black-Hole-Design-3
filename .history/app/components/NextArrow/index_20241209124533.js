@@ -13,36 +13,21 @@ export default function NextArrow({
   delay = "3"
 }) {
 
-  useEffect(() => {
-    const arrows = document.querySelector(`.${styles.arrowsBH}`);
-    gsap.fromTo(
-      arrows,
-      {
-        x: '-4rem', 
-        opacity:0,
-      },
-      {
-        delay: delay,
-        x: 0,
-        duration: 2,
-        opacity:1,
-        ease: "power1.inOut",
-      }
-    )
-  })
+  useEffect
 
   useEffect(() => {
-    const arrow = document.querySelectorAll(`.${styles.arrowBH}`);
+    const arrows = document.querySelectorAll(`.${styles.arrowBH}`);
     gsap.fromTo(
-        arrow,
+        arrows,
         {
-          x: '-4rem', 
+            x: '-2rem', 
         },
         {
-          x: 0,
-          duration: 1,
-          stagger: 1,
-          ease: "power1.inOut",
+            delay: delay,
+            x: 0,
+            duration: 1,
+            stagger: 1,
+            ease: "power1.inOut",
         }
     );
 }, []);

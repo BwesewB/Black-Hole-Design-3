@@ -16,7 +16,8 @@
     justify-content: center;
     cursor:pointer;
     margin-left: 0.6rem;
-    z-index: 1000;  
+    z-index: 1000;
+    opacity: 0;
 }
 
 .nextButton p {

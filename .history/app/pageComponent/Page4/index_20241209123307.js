@@ -49,20 +49,15 @@ export default function PageFour({ handleNext, playVideo }) {
 
   useEffect(() => {
     gsap.fromTo(
-      [
-        document.querySelector(`.${styles.nextButton} svg`), // Target the SVG first
-        document.querySelector(`.${styles.nextButton} p`)   // Then target the <p>
-      ],
+      document.querySelectorAll(`.${styles.nextButton}`),
       {
-        x:"-3rem",
-        opacity:0,
+        y:"-3rem"
       },
       {
         opacity:1,
         delay:3,
         stagger:0.2,
-        x:"0",
-        ease: "power1.inOut"
+        y:"0"
       }
     )
   })
