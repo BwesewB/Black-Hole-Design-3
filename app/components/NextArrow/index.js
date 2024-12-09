@@ -29,7 +29,7 @@ export default function NextArrow({
         ease: "power1.inOut",
       }
     )
-  })
+  }, []);
 
   useEffect(() => {
     const arrow = document.querySelectorAll(`.${styles.arrowBH}`);
@@ -46,6 +46,7 @@ export default function NextArrow({
         }
     );
 }, []);
+
   return (
     <div className={styles.arrowsBH} onClick={onClickHandler}>
         <svg width="31" height="54" viewBox="0 0 31 54" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.arrowBH}>

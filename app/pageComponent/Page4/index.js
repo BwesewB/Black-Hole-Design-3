@@ -3,6 +3,7 @@ import TextAreaLeft from "../../components/TextAreas/TextAreaLeft";
 import { useState, useEffect } from "react";
 import gsap from "gsap";
 import styles from "./Page4.module.css"
+import NextAnimaButton from "../../components/NextAnimaButton";
 
 export default function PageFour({ handleNext, playVideo }) {
   const [isAnimatingOut, setIsAnimatingOut] = useState(false);
@@ -46,27 +47,6 @@ export default function PageFour({ handleNext, playVideo }) {
     });
   };
 
-
-  useEffect(() => {
-    gsap.fromTo(
-      [
-        document.querySelector(`.${styles.nextButton} svg`), // Target the SVG first
-        document.querySelector(`.${styles.nextButton} p`)   // Then target the <p>
-      ],
-      {
-        x:"-3rem",
-        opacity:0,
-      },
-      {
-        opacity:1,
-        delay:3,
-        stagger:0.2,
-        x:"0",
-        ease: "power1.inOut"
-      }
-    )
-  })
-
   const onClickHandler = () => {
     onTextAnimateOut()
     handleNext("PageFive")
@@ -82,21 +62,20 @@ export default function PageFour({ handleNext, playVideo }) {
     });
 
     // Update to the next video sequence (circular)
-    setVideoIndex((prevIndex) => (prevIndex + 1) % videoSequences.length);
-
-    setCurrentTextIndex((prevIndex) => (prevIndex + 1) % textAreas.length)
+    setVideoIndex((prevIndex) => {
+      const nextIndex = (prevIndex + 1) % videoSequences.length;
+      return nextIndex;
+    });
+    
+    setCurrentTextIndex((prevIndex) => {
+      const nextIndex = (prevIndex + 1) % textAreas.length;
+      return nextIndex;
+    });
   }
 
   return (   
     <>
-      <div className={styles.buttonWidth}>
-        <div className={styles.nextButton} onClick={onNextClick}>
-          <p>NEXT</p>
-          <svg viewBox="0 0 31 54" fill="none" xmlns="http://www.w3.org/2000/svg" className={styles.arrowBH}>
-            <path fillRule="evenodd" clipRule="evenodd" d="M1.56129 52.6298C-0.443373 50.7306 -0.528905 47.566 1.37025 45.5613L18.9546 27L1.37025 8.43874C-0.528906 6.43407 -0.443375 3.2694 1.56129 1.37025C3.56595 -0.528908 6.73062 -0.443374 8.62977 1.56129L29.4719 23.5613C31.2989 25.4898 31.2989 28.5103 29.4719 30.4387L8.62978 52.4387C6.73062 54.4434 3.56595 54.5289 1.56129 52.6298Z" fill="#F8F8F8"/>
-          </svg>
-        </div>
-      </div>
+      <NextAnimaButton nextText="NEXT" onNextClick={onNextClick}/>
 
       <div>
         <TextAreaLeft
