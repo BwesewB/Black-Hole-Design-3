@@ -22,32 +22,34 @@ export default function PageLayout({
     setIsAnimatingOut(true);
 
     // Animate out the heading
-    gsap.to(`.${styles.word}`, {
+    gsap.to(".h2BH", {
       opacity: 0,
-      duration: 0.5,
+      y: '5rem',
+      duration: 1,
       ease: "power2.inOut"
     });
 
     // Animate out the italic subtitle
     gsap.to(`.${styles.subheaderItalixBH}`, {
       opacity: 0,
-      delay: 0.07,
-      duration: 0.5,
+      y: '5rem',
+      duration: 1,
       ease: "power2.inOut"
     });
 
     // Animate out the smaller text
     gsap.to(`.${styles.wordSmaller}`, {
       opacity: 0,
-      delay: 0.05,
-      stagger: 0.005,
+      y: '2rem',
+      duration: 1,
+      stagger: 0.1,
       ease: "power2.inOut"
     });
   };
 
   const onClickHandler = () => {
     onTextAnimateOut();
-    setTimeout(() => handleNext({handleNext}), 500);
+    handleNext({handleNext});
   };
 
   return (

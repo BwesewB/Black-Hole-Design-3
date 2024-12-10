@@ -31,7 +31,6 @@ export default function PageLayout({
     // Animate out the italic subtitle
     gsap.to(`.${styles.subheaderItalixBH}`, {
       opacity: 0,
-      delay: 0.07,
       duration: 0.5,
       ease: "power2.inOut"
     });
@@ -39,7 +38,6 @@ export default function PageLayout({
     // Animate out the smaller text
     gsap.to(`.${styles.wordSmaller}`, {
       opacity: 0,
-      delay: 0.05,
       stagger: 0.005,
       ease: "power2.inOut"
     });
