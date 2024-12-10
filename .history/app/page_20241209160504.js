@@ -178,9 +178,9 @@ export default function Home({}) {
           <PageEight 
             handleNext={(nextPage) => 
               handleNextPage(nextPage, {
-                src: "/videos/Clip24.mp4",
+                src: "",
                 loop: false,
-                onVideoEnd: () => videoRef.current.playNextVideo("/videos/Clip25.mp4", true),
+                onVideoEnd: () => videoRef.current.playNextVideo("", true),
               })
             }
           />

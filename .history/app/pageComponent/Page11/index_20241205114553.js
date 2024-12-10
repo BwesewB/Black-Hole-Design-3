@@ -1,6 +1,6 @@
 import PageLayout from "../PageLayout";
 
-export default function PageTwelve({ handleNext }) {
+export default function PageEleven({ handleNext }) {
 
   return (   
     <>

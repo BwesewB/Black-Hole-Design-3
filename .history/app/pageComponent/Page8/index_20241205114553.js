@@ -5,8 +5,8 @@ export default function PageEight({ handleNext }) {
   return (   
     <>
       <PageLayout 
-        headingTitle='boom'
-        italicSubtitle=''
+        headingTitle='Ton 618'
+        italicSubtitle='The Giant Among Giants'
         pText=''
         handleNext={() => handleNext("PageNine")}
       />

@@ -1,5 +1,6 @@
 "use client"; 
 
+import Image from "next/image";
 import gsap from "gsap";
 import LandingPage from "./pageComponent/LandingPage";
 import React, { useState, useRef } from "react";
@@ -16,26 +17,14 @@ import PageNine from "./pageComponent/Page9";
 import PageTen from "./pageComponent/Page10";
 import PageEleven from "./pageComponent/Page11";
 import PageTwelve from "./pageComponent/Page12";
-import PageThirteen from "./pageComponent/Page13";
 
 export default function Home({}) {
   const [currentPage, setCurrentPage] = useState("LandingPage");
-  const [hasPlayedClip21, setHasPlayedClip21] = useState(false);
   const videoRef = useRef(null);
 
   const changeBackgroundVideo = () => {
-    if (hasPlayedClip21) {
-      console.log("Clip21 has already been played. Action blocked.");
-      return;
-    }
-
-    setHasPlayedClip21(true); // Prevent further clicks
     videoRef.current.playNextVideo("/videos/Clip21.mp4", false, () => {
-      console.log("Clip21 has ended.");
-      // Play Clip18 after Clip21 finishes
-      videoRef.current.playNextVideo("/videos/Clip18.mp4", true, () => {
-        console.log("Clip18 is now playing on loop.");
-      });
+      console.log("Clip21 has ended or looped.");
     });
   };
 
@@ -168,7 +157,7 @@ export default function Home({}) {
               handleNextPage(nextPage, {
                 src: "/videos/Clip22.mp4",
                 loop: false,
-                onVideoEnd: () => videoRef.current.playNextVideo("/videos/Clip23.mp4", true),
+                onVideoEnd: () => videoRef.current.playNextVideo("", true),
               })
             }
             changeBackgroundVideo={changeBackgroundVideo}
@@ -178,9 +167,9 @@ export default function Home({}) {
           <PageEight 
             handleNext={(nextPage) => 
               handleNextPage(nextPage, {
-                src: "/videos/Clip24.mp4",
+                src: "",
                 loop: false,
-                onVideoEnd: () => videoRef.current.playNextVideo("/videos/Clip25.mp4", true),
+                onVideoEnd: () => videoRef.current.playNextVideo("", true),
               })
             }
           />
@@ -220,17 +209,6 @@ export default function Home({}) {
         )}
         {currentPage === "PageTwelve" && (
           <PageTwelve 
-            handleNext={(nextPage) => 
-              handleNextPage(nextPage, {
-                src: "",
-                loop: false,
-                onVideoEnd: () => videoRef.current.playNextVideo("", true),
-              })
-            }
-          />
-        )}
-        {currentPage === "PageThirteen" && (
-          <PageThirteen 
             handleNext={(nextPage) => 
               handleNextPage(nextPage, {
                 src: "",

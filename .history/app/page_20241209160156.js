@@ -1,5 +1,6 @@
 "use client"; 
 
+import Image from "next/image";
 import gsap from "gsap";
 import LandingPage from "./pageComponent/LandingPage";
 import React, { useState, useRef } from "react";
@@ -16,7 +17,6 @@ import PageNine from "./pageComponent/Page9";
 import PageTen from "./pageComponent/Page10";
 import PageEleven from "./pageComponent/Page11";
 import PageTwelve from "./pageComponent/Page12";
-import PageThirteen from "./pageComponent/Page13";
 
 export default function Home({}) {
   const [currentPage, setCurrentPage] = useState("LandingPage");
@@ -178,9 +178,9 @@ export default function Home({}) {
           <PageEight 
             handleNext={(nextPage) => 
               handleNextPage(nextPage, {
-                src: "/videos/Clip24.mp4",
+                src: "",
                 loop: false,
-                onVideoEnd: () => videoRef.current.playNextVideo("/videos/Clip25.mp4", true),
+                onVideoEnd: () => videoRef.current.playNextVideo("", true),
               })
             }
           />
@@ -220,17 +220,6 @@ export default function Home({}) {
         )}
         {currentPage === "PageTwelve" && (
           <PageTwelve 
-            handleNext={(nextPage) => 
-              handleNextPage(nextPage, {
-                src: "",
-                loop: false,
-                onVideoEnd: () => videoRef.current.playNextVideo("", true),
-              })
-            }
-          />
-        )}
-        {currentPage === "PageThirteen" && (
-          <PageThirteen 
             handleNext={(nextPage) => 
               handleNextPage(nextPage, {
                 src: "",

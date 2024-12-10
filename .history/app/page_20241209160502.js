@@ -1,5 +1,6 @@
 "use client"; 
 
+import Image from "next/image";
 import gsap from "gsap";
 import LandingPage from "./pageComponent/LandingPage";
 import React, { useState, useRef } from "react";
@@ -178,9 +179,9 @@ export default function Home({}) {
           <PageEight 
             handleNext={(nextPage) => 
               handleNextPage(nextPage, {
-                src: "/videos/Clip24.mp4",
+                src: "",
                 loop: false,
-                onVideoEnd: () => videoRef.current.playNextVideo("/videos/Clip25.mp4", true),
+                onVideoEnd: () => videoRef.current.playNextVideo("", true),
               })
             }
           />
