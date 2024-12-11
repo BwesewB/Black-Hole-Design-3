@@ -189,9 +189,9 @@ export default function Home({}) {
           <PageNine 
             handleNext={(nextPage) => 
               handleNextPage(nextPage, {
-                src: "",
+                src: "/videos/Clip26.mp4",
                 loop: false,
-                onVideoEnd: () => videoRef.current.playNextVideo("", true),
+                onVideoEnd: () => videoRef.current.playNextVideo("/videos/Clip27.mp4", true),
               })
             }
           />
@@ -200,9 +200,9 @@ export default function Home({}) {
           <PageTen 
             handleNext={(nextPage) => 
               handleNextPage(nextPage, {
-                src: "",
+                src: "/videos/Clip28.mp4",
                 loop: false,
-                onVideoEnd: () => videoRef.current.playNextVideo("", true),
+                onVideoEnd: () => videoRef.current.playNextVideo("/videos/Clip29.mp4", true),
               })
             }
           />
