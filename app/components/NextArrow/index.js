@@ -7,7 +7,7 @@ import styles from "./NextArrow.module.css";
 export default function NextArrow({ 
   onClickHandler,
   fill = "#F8F8F8",
-  delay = "3",
+  delay = "5",
   arrowAnimatingOut
 }) {
 
