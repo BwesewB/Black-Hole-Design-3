@@ -49,6 +49,16 @@ export default function Home({}) {
       transitionVideo = getTransitionVideo(currentVideo);
     }
 
+    if (nextPage === "LandingPage") {
+      // Play Clip34 as transition video
+      videoRef.current.playNextVideo("/videos/Clip34.mp4", false, () => {
+        // After Clip34 ends, navigate to LandingPage and reset the video to Clip1
+        setCurrentPage("LandingPage");
+        videoRef.current.playNextVideo("/videos/Clip1.mp4", true); // Play Clip1 on repeat
+      });
+      return; // Return early to avoid the page transition logic
+    }
+
     // Hide the current page with animation
     gsap.to(".current-page", {
       onComplete: () => {

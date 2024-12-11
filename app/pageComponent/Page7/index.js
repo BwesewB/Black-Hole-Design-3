@@ -1,7 +1,5 @@
 import PageLayout from "../PageLayout";
 import NextAnimaButton from "../../components/NextAnimaButton";
-import gsap from "gsap";
-import styles from "./Page7.module.css"
 
 export default function PageSeven({ handleNext, changeBackgroundVideo }) {
   const handleClick = () => {
