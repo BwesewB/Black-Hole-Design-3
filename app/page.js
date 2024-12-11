@@ -211,9 +211,9 @@ export default function Home({}) {
           <PageEleven 
             handleNext={(nextPage) => 
               handleNextPage(nextPage, {
-                src: "",
+                src: "/videos/Clip30.mp4",
                 loop: false,
-                onVideoEnd: () => videoRef.current.playNextVideo("", true),
+                onVideoEnd: () => videoRef.current.playNextVideo("/videos/Clip31.mp4", true),
               })
             }
           />
@@ -222,9 +222,9 @@ export default function Home({}) {
           <PageTwelve 
             handleNext={(nextPage) => 
               handleNextPage(nextPage, {
-                src: "",
+                src: "/videos/Clip32.mp4",
                 loop: false,
-                onVideoEnd: () => videoRef.current.playNextVideo("", true),
+                onVideoEnd: () => videoRef.current.playNextVideo("/videos/Clip33.mp4", true),
               })
             }
           />
@@ -233,9 +233,9 @@ export default function Home({}) {
           <PageThirteen 
             handleNext={(nextPage) => 
               handleNextPage(nextPage, {
-                src: "",
+                src: "/videos/Clip34.mp4",
                 loop: false,
-                onVideoEnd: () => videoRef.current.playNextVideo("", true),
+                onVideoEnd: () => videoRef.current.playNextVideo("/videos/Clip1.mp4", true),
               })
             }
           />
