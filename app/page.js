@@ -233,9 +233,9 @@ export default function Home({}) {
           <PageThirteen 
             handleNext={(nextPage) => 
               handleNextPage(nextPage, {
-                src: "/videos/Clip34.mp4",
+                src: "/videos/Clip33.mp4",
                 loop: false,
-                onVideoEnd: () => videoRef.current.playNextVideo("/videos/Clip1.mp4", true),
+                onVideoEnd: () => videoRef.current.playNextVideo("/videos/Clip34.mp4", true),
               })
             }
           />

@@ -1,12 +1,10 @@
 import PageLayout from "../PageLayout";
 import NextAnimaButton from "../../components/NextAnimaButton";
 import gsap from "gsap";
+import styles from "./Page7.module.css"
 
 export default function PageSeven({ handleNext, changeBackgroundVideo }) {
   const handleClick = () => {
-    // Animate the button opacity to 0
-    gsap.to(".next-anima-button", { opacity: 0, duration: 0.5 });
-    // Call the function to play the video
     changeBackgroundVideo();
   };
 
@@ -15,7 +13,6 @@ export default function PageSeven({ handleNext, changeBackgroundVideo }) {
       <NextAnimaButton
         nextText="Watch Molecules Fuse"
         onNextClick={handleClick}
-        className="next-anima-button"
       />
       <PageLayout
         headingTitle="Stellar Collapse Pt.2"

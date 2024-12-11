@@ -2,7 +2,8 @@ import gsap from "gsap";
 import TextAreaLeft from '../../components/TextAreaLeft';
 import NextArrow from '../../components/NextArrow';
 import { useState } from "react";
-import styles from "../../components/TextAreaLeft/TextAreaLeft.module.css"
+import textAreaLeftStyles  from "../../components/TextAreaLeft/TextAreaLeft.module.css"
+import nextArrowStyles from "../../components/NextArrow/NextArrow.module.css"
 
 export default function PageLayout({ 
     handleNext,
@@ -16,20 +17,21 @@ export default function PageLayout({
 
   // State to track the animation of the text out
   const [isAnimatingOut, setIsAnimatingOut] = useState(false);
+  const [arrowAnimatingOut, setArrowAnimatingOut] = useState(false)
 
   // Function to animate out text when the "NextArrow" is clicked
   const onTextAnimateOut = () => {
     setIsAnimatingOut(true);
 
     // Animate out the heading
-    gsap.to(`.${styles.word}`, {
+    gsap.to(`.${textAreaLeftStyles.word}`, {
       opacity: 0,
       duration: 0.5,
       ease: "power2.inOut"
     });
 
     // Animate out the italic subtitle
-    gsap.to(`.${styles.subheaderItalixBH}`, {
+    gsap.to(`.${textAreaLeftStyles.subheaderItalixBH}`, {
       opacity: 0,
       delay: 0.07,
       duration: 0.5,
@@ -37,7 +39,7 @@ export default function PageLayout({
     });
 
     // Animate out the smaller text
-    gsap.to(`.${styles.wordSmaller}`, {
+    gsap.to(`.${textAreaLeftStyles.wordSmaller}`, {
       opacity: 0,
       delay: 0.05,
       stagger: 0.005,
@@ -45,7 +47,19 @@ export default function PageLayout({
     });
   };
 
+  const onArrowAnimateOut = () => {
+    setArrowAnimatingOut(true);
+
+    gsap.to(
+      `.${nextArrowStyles.arrowsBH}`, 
+      {
+        opacity:0,
+        duration:0.4
+      })
+  }
+
   const onClickHandler = () => {
+    onArrowAnimateOut()
     onTextAnimateOut();
     setTimeout(() => handleNext({handleNext}), 500);
   };
@@ -60,7 +74,12 @@ export default function PageLayout({
               delay={delay}
               isAnimatingOut={isAnimatingOut} // Pass down the animation state
             />
-            <NextArrow onClickHandler={onClickHandler} fill={fill} delay={delayArrow}/>
+            <NextArrow 
+              onClickHandler={onClickHandler} 
+              fill={fill} 
+              delay={delayArrow} 
+              arrowAnimatingOut={arrowAnimatingOut}
+            />
         </div>
     </>
   );

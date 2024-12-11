@@ -4,36 +4,37 @@ import gsap from "gsap";
 import { useEffect } from "react";
 import styles from "./NextArrow.module.css";
 
-
-
-
 export default function NextArrow({ 
   onClickHandler,
   fill = "#F8F8F8",
-  delay = "3"
+  delay = "3",
+  arrowAnimatingOut
 }) {
 
   useEffect(() => {
-    const arrows = document.querySelector(`.${styles.arrowsBH}`);
-    gsap.fromTo(
-      arrows,
-      {
-        x: '-4rem', 
-        opacity:0,
-      },
-      {
-        delay: delay,
-        x: 0,
-        duration: 2,
-        opacity:1,
-        ease: "power1.inOut",
-      }
-    )
-  }, []);
+    if(!arrowAnimatingOut) {
+      const arrows = document.querySelector(`.${styles.arrowsBH}`);
+      gsap.fromTo(
+        arrows,
+        {
+          x: '-4rem', 
+          opacity:0,
+        },
+        {
+          delay: delay,
+          x: 0,
+          duration: 2,
+          opacity:1,
+          ease: "power1.inOut",
+        }
+      )
+    }
+  }, [arrowAnimatingOut]);
 
   useEffect(() => {
-    const arrow = document.querySelectorAll(`.${styles.arrowBH}`);
-    gsap.fromTo(
+    if(!arrowAnimatingOut) {
+      const arrow = document.querySelectorAll(`.${styles.arrowBH}`);
+      gsap.fromTo(
         arrow,
         {
           x: '-4rem', 
@@ -44,8 +45,9 @@ export default function NextArrow({
           stagger: 1,
           ease: "power1.inOut",
         }
-    );
-}, []);
+      );
+    }
+}, [arrowAnimatingOut]);
 
   return (
     <div className={styles.arrowsBH} onClick={onClickHandler}>
