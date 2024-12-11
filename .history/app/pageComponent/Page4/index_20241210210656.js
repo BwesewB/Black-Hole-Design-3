@@ -1,10 +1,10 @@
-import NextArrow from "../../components/NextArrow";
+import NextArrow from "../../components/NextArrow"; 
 import TextAreaLeft from "../../components/TextAreaLeft";
 import { useState, useEffect } from "react";
 import gsap from "gsap";
 import styles from "./Page4.module.css"
 import NextAnimaButton from "../../components/NextAnimaButton";
-import textAreaLeftStyles  from "../../components/TextAreaLeft/TextAreaLeft.module.css"
+import textAreaLeftStyles from "../../components/TextAreaLeft/TextAreaLeft.module.css"
 
 export default function PageFour({ handleNext, playVideo }) {
   const [isAnimatingOut, setIsAnimatingOut] = useState(false);
@@ -38,8 +38,10 @@ export default function PageFour({ handleNext, playVideo }) {
 
   // Function to animate out text when the "NextArrow" is clicked
   const onClickHandler = () => {
-    onTextAnimateOut();
-    handleNext("PageFive")
+    // Trigger the text animation and then move to next page/video
+    onTextAnimateOut(() => {
+      handleNext("PageFive");
+    });
   };
 
   const onNextClick = () => {
@@ -63,7 +65,7 @@ export default function PageFour({ handleNext, playVideo }) {
     });
   }
 
-  const onTextAnimateOut = () => {
+  const onTextAnimateOut = (callback) => {
     setIsAnimatingOut(true);
 
     // Animate out the heading
@@ -86,13 +88,14 @@ export default function PageFour({ handleNext, playVideo }) {
       opacity: 0,
       delay: 0.05,
       stagger: 0.005,
-      ease: "power2.inOut"
+      ease: "power2.inOut",
+      onComplete: callback // Call the callback function once the animation is complete
     });
   };
 
   return (   
     <>
-      <NextAnimaButton nextText="NEXT" onNextClick={onNextClick}/>
+      <NextAnimaButton nextText="NEXT" onNextClick={onNextClick} />
 
       <div>
         <TextAreaLeft
@@ -105,7 +108,7 @@ export default function PageFour({ handleNext, playVideo }) {
         />
       </div>
 
-      <NextArrow onClickHandler={onClickHandler}/>
+      <NextArrow onClickHandler={onClickHandler} />
     </>
   );
 }

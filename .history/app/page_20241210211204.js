@@ -23,10 +23,10 @@ export default function Home({}) {
   const [hasPlayedClip21, setHasPlayedClip21] = useState(false);
   const videoRef = useRef(null);
 
-  const hasPlayedClip21Ref = useRef(false);
-
   const changeBackgroundVideo = () => {
-    if (hasPlayedClip21Ref.current) {
+    console.log("Attempting to change background video...");
+  
+    if (hasPlayedClip21) {
       console.log("Clip21 has already been played. Action blocked.");
       return;
     }
@@ -34,18 +34,15 @@ export default function Home({}) {
     console.log("Playing Clip21...");
     videoRef.current.playNextVideo("/videos/Clip21.mp4", false, () => {
       console.log("Clip21 has ended.");
-      hasPlayedClip21Ref.current = true; // Update ref to block further plays
-      
-      // Now set the state to trigger future actions
-      setHasPlayedClip21(true);
+      setHasPlayedClip21(true); // Ensure this happens only after Clip21 is finished
   
+      // Play Clip18 after Clip21 finishes
       console.log("Playing Clip18...");
       videoRef.current.playNextVideo("/videos/Clip18.mp4", true, () => {
         console.log("Clip18 is now playing on loop.");
       });
     });
   };
-  
   
 
   const handleNextPage = (nextPage, videoConfig) => {
